@@ -2,28 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Site com Modo Noturno e Mini Jogo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site Completo</title>
   <style>
+    /* Estilos para o modo claro e escuro */
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background-color: #fff;
       color: #333;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
       transition: background-color 0.3s, color 0.3s;
     }
-
     .dark-mode {
       background-color: #121212;
       color: #e0e0e0;
     }
-
-    img {
-      width: 300px;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
     button {
       padding: 10px 20px;
       margin: 10px;
@@ -35,62 +29,64 @@
       color: white;
       transition: background-color 0.3s;
     }
-
     button:hover {
       background-color: #0056b3;
     }
-
-    .dark-mode button {
-      background-color: #444;
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
     }
-
-    .dark-mode button:hover {
-      background-color: #222;
-    }
-
-    input {
-      padding: 8px;
-      font-size: 16px;
-      margin-top: 10px;
+    .spotify-player {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Bem-vindo ao Meu Site!</h1>
-  <p>Aqui temos uma imagem, um botão para mudar o tema e um mini jogo.</p>
+  <h1>Bem-vindo ao Meu Site Completo!</h1>
+  <p>Explore o Doom, ouça música no Spotify e interaja com o assistente de IA.</p>
 
-  <img src="https://placekitten.com/300/200" alt="Imagem fofinha de gatinho">
+  <!-- Botão para alternar entre modo claro e escuro -->
+  <button onclick="alternarModo()">Alternar Modo</button>
 
-  <div>
-    <button onclick="alternarModo()">Alternar Modo Noturno</button>
+  <hr>
+
+  <!-- Jogo Doom -->
+  <h2>🎮 Jogue Doom</h2>
+  <iframe src="https://classicreload.com/doom.html" title="Jogo Doom"></iframe>
+
+  <hr>
+
+  <!-- Spotify Player -->
+  <h2>🎵 Ouça no Spotify</h2>
+  <div class="spotify-player">
+    <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
 
   <hr>
 
-  <h2>🎮 Mini Jogo: Adivinhe o número (1 a 10)</h2>
-  <p>Digite um número e veja se acerta!</p>
-  <input type="number" id="palpite" min="1" max="10">
-  <button onclick="verificarPalpite()">Tentar</button>
-  <p id="resultado"></p>
+  <!-- Assistente de IA -->
+  <h2>🤖 Assistente de IA</h2>
+  <p>Digite sua pergunta:</p>
+  <input type="text" id="pergunta" placeholder="Pergunte algo...">
+  <button onclick="obterResposta()">Perguntar</button>
+  <p id="resposta"></p>
 
   <script>
+    // Função para alternar entre modo claro e escuro
     function alternarModo() {
       document.body.classList.toggle('dark-mode');
     }
 
-    const numeroSecreto = Math.floor(Math.random() * 10) + 1;
-
-    function verificarPalpite() {
-      const palpite = parseInt(document.getElementById('palpite').value);
-      const resultado = document.getElementById('resultado');
-
-      if (isNaN(palpite) || palpite < 1 || palpite > 10) {
-        resultado.textContent = 'Por favor, digite um número entre 1 e 10.';
-      } else if (palpite === numeroSecreto) {
-        resultado.textContent = '🎉 Parabéns! Você acertou!';
+    // Função para obter resposta do assistente de IA
+    function obterResposta() {
+      const pergunta = document.getElementById('pergunta').value;
+      const resposta = document.getElementById('resposta');
+      if (pergunta) {
+        resposta.textContent = `Você perguntou: "${pergunta}". Resposta do assistente: [Resposta simulada].`;
       } else {
-        resultado.textContent = '❌ Não foi dessa vez. Tente novamente!';
+        resposta.textContent = 'Por favor, digite uma pergunta.';
       }
     }
   </script>
