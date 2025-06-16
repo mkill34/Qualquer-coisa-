@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site com Minecraft, Spotify e IA</title>
+  <title>Site com Minecraft, CS, Spotify e IA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -53,11 +53,12 @@
   <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
 
   <div class="container">
-    <h1>Bem-vindo ao Site com IA, Jogo e Spotify!</h1>
+    <h1>Bem-vindo ao Site com IA, Jogos e Spotify!</h1>
     <img src="https://placekitten.com/400/200" alt="Imagem Exemplo">
     <br>
     <button onclick="startMinecraft()">Iniciar Mini Minecraft</button>
-    <div id="minecraftContainer"></div>
+    <button onclick="startShooter()">Iniciar Jogo de Tiro (CS)</button>
+    <div id="gameContainer"></div>
 
     <h2>Assistente IA</h2>
     <input type="text" id="userInput" placeholder="Fale com a IA" style="width: 300px; padding: 5px;">
@@ -66,7 +67,7 @@
   </div>
 
   <div class="spotify-player">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="250" height="80" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3U3j7E?utm_source=generator" width="250" height="80" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <script>
@@ -83,6 +84,8 @@
         reply = "Olá! Como posso te ajudar hoje?";
       } else if (input.includes("minecraft")) {
         reply = "Para jogar Minecraft, clique no botão acima!";
+      } else if (input.includes("cs") || input.includes("tiro")) {
+        reply = "Clique no botão de jogo de tiro para começar!";
       } else if (input.includes("spotify")) {
         reply = "O player do Spotify está no canto inferior esquerdo.";
       }
@@ -90,15 +93,25 @@
     }
 
     function startMinecraft() {
-      const container = document.getElementById("minecraftContainer");
-      if (!document.getElementById("minecraftIframe")) {
-        const iframe = document.createElement("iframe");
-        iframe.id = "minecraftIframe";
-        iframe.src = "https://classic.minecraft.net/";
-        iframe.width = "800";
-        iframe.height = "600";
-        container.appendChild(iframe);
-      }
+      const container = document.getElementById("gameContainer");
+      container.innerHTML = "";
+      const iframe = document.createElement("iframe");
+      iframe.id = "minecraftIframe";
+      iframe.src = "https://classic.minecraft.net/";
+      iframe.width = "800";
+      iframe.height = "600";
+      container.appendChild(iframe);
+    }
+
+    function startShooter() {
+      const container = document.getElementById("gameContainer");
+      container.innerHTML = "";
+      const iframe = document.createElement("iframe");
+      iframe.id = "shooterIframe";
+      iframe.src = "https://krunker.io/";
+      iframe.width = "800";
+      iframe.height = "600";
+      container.appendChild(iframe);
     }
   </script>
 </body>
