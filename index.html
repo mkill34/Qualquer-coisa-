@@ -106,7 +106,7 @@
   <div class="container">
     <h1>Jogos Online + IA</h1>
     <button onclick="loadMinecraft()">Abrir Minecraft Web</button>
-    <button onclick="loadShooter()">Abrir Jogo de Tiro</button>
+    <button onclick="loadShooter()">Abrir Doom Clássico</button>
     <button onclick="loadRacing()">Abrir Jogo de Corrida</button>
     <button id="fullscreenBtn" onclick="goFullscreen()">Tela Cheia</button>
     <div id="gameContainer"></div>
@@ -133,7 +133,7 @@
       let reply = "Não entendi, tente novamente.";
       if (input.includes("olá") || input.includes("oi")) reply = "Oi! Em que posso ajudar?";
       else if (input.includes("minecraft")) reply = "Clique no botão para abrir o Minecraft Web!";
-      else if (input.includes("cs") || input.includes("tiro")) reply = "Use o botão para abrir o jogo de tiro.";
+      else if (input.includes("doom") || input.includes("tiro")) reply = "Use o botão para abrir o Doom Clássico.";
       else if (input.includes("corrida")) reply = "Use o botão para abrir o jogo de corrida.";
       else if (input.includes("spotify")) reply = "O player está no canto inferior esquerdo.";
       response.innerText = reply;
@@ -141,13 +141,13 @@
 
     function loadMinecraft() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe id="gameFrame" src="https://minecraftforfree.net/embed.html" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://classic.minecraft.net/" allowfullscreen></iframe>';
       document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
     function loadShooter() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe id="gameFrame" src="https://krunker.io" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://js-dos.com/games/doom.exe.html" allowfullscreen></iframe>';
       document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
