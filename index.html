@@ -95,6 +95,9 @@
       font-size: 14px;
       font-style: italic;
     }
+    #fullscreenBtn {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -105,6 +108,7 @@
     <button onclick="loadMinecraft()">Abrir Minecraft Web</button>
     <button onclick="loadShooter()">Abrir Jogo de Tiro</button>
     <button onclick="loadRacing()">Abrir Jogo de Corrida</button>
+    <button id="fullscreenBtn" onclick="goFullscreen()">Tela Cheia</button>
     <div id="gameContainer"></div>
   </div>
 
@@ -137,17 +141,31 @@
 
     function loadMinecraft() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe src="https://minecraftforfree.net/embed.html" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://minecraftforfree.net/embed.html" allowfullscreen></iframe>';
+      document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
     function loadShooter() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe src="https://krunker.io" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://krunker.io" allowfullscreen></iframe>';
+      document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
     function loadRacing() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe src="https://www.crazygames.com/embed/extreme-car-parking" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://www.crazygames.com/embed/extreme-car-parking" allowfullscreen></iframe>';
+      document.getElementById("fullscreenBtn").style.display = 'inline-block';
+    }
+
+    function goFullscreen() {
+      const iframe = document.getElementById("gameFrame");
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
     }
   </script>
 </body>
