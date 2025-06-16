@@ -1,95 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Site Completo</title>
+  <title>Site com Jogo, Spotify e IA</title>
   <style>
-    /* Estilos para o modo claro e escuro */
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-      transition: background-color 0.3s, color 0.3s;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+      transition: background 0.3s, color 0.3s;
     }
-    .dark-mode {
+    body.dark-mode {
       background-color: #121212;
-      color: #e0e0e0;
+      color: white;
+    }
+    .container {
+      padding: 20px;
+      text-align: center;
     }
     button {
       padding: 10px 20px;
-      margin: 10px;
       font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #007BFF;
-      color: white;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #0056b3;
+      margin: 10px;
     }
     iframe {
-      width: 100%;
-      height: 500px;
       border: none;
-    }
-    .spotify-player {
       margin-top: 20px;
+    }
+    canvas {
+      border: 2px solid black;
+      margin: 20px auto;
+      display: block;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Bem-vindo ao Site com IA, Jogo e Spotify!</h1>
+    <img src="https://placekitten.com/400/200" alt="Imagem Exemplo">
+    <br>
+    <button onclick="toggleDarkMode()">Alternar Modo Noturno</button>
+    <button onclick="startDoom()">Iniciar Mini Doom</button>
+    <div id="doomContainer"></div>
 
-  <h1>Bem-vindo ao Meu Site Completo!</h1>
-  <p>Explore o Doom, ouça música no Spotify e interaja com o assistente de IA.</p>
+    <h2>Spotify Player</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="300" height="380" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-  <!-- Botão para alternar entre modo claro e escuro -->
-  <button onclick="alternarModo()">Alternar Modo</button>
-
-  <hr>
-
-  <!-- Jogo Doom -->
-  <h2>🎮 Jogue Doom</h2>
-  <iframe src="https://classicreload.com/doom.html" title="Jogo Doom"></iframe>
-
-  <hr>
-
-  <!-- Spotify Player -->
-  <h2>🎵 Ouça no Spotify</h2>
-  <div class="spotify-player">
-    <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <h2>Assistente IA</h2>
+    <input type="text" id="userInput" placeholder="Fale com a IA" style="width: 300px; padding: 5px;">
+    <button onclick="chatWithAI()">Enviar</button>
+    <div id="aiResponse" style="margin-top: 10px;"></div>
   </div>
 
-  <hr>
-
-  <!-- Assistente de IA -->
-  <h2>🤖 Assistente de IA</h2>
-  <p>Digite sua pergunta:</p>
-  <input type="text" id="pergunta" placeholder="Pergunte algo...">
-  <button onclick="obterResposta()">Perguntar</button>
-  <p id="resposta"></p>
-
   <script>
-    // Função para alternar entre modo claro e escuro
-    function alternarModo() {
+    function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
 
-    // Função para obter resposta do assistente de IA
-    function obterResposta() {
-      const pergunta = document.getElementById('pergunta').value;
-      const resposta = document.getElementById('resposta');
-      if (pergunta) {
-        resposta.textContent = `Você perguntou: "${pergunta}". Resposta do assistente: [Resposta simulada].`;
-      } else {
-        resposta.textContent = 'Por favor, digite uma pergunta.';
+    function chatWithAI() {
+      const input = document.getElementById("userInput").value.toLowerCase();
+      const response = document.getElementById("aiResponse");
+
+      let reply = "Desculpe, não entendi. Pode repetir?";
+      if (input.includes("olá") || input.includes("oi")) {
+        reply = "Olá! Como posso te ajudar hoje?";
+      } else if (input.includes("doom")) {
+        reply = "Para jogar Doom, clique no botão acima!";
+      } else if (input.includes("spotify")) {
+        reply = "A playlist do Spotify está logo acima. Aproveite!";
+      }
+      response.innerText = reply;
+    }
+
+    function startDoom() {
+      const container = document.getElementById("doomContainer");
+      if (!document.getElementById("doomIframe")) {
+        const iframe = document.createElement("iframe");
+        iframe.id = "doomIframe";
+        iframe.src = "https://js-dos.com/games/doom.exe.html";
+        iframe.width = "640";
+        iframe.height = "400";
+        container.appendChild(iframe);
       }
     }
   </script>
-
 </body>
 </html>
