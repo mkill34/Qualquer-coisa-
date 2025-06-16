@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site com Jogo, Spotify e IA</title>
+  <title>Site com Minecraft, Spotify e IA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,6 +20,18 @@
     .container {
       padding: 20px;
       text-align: center;
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+    .spotify-player {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 1000;
     }
     button {
       padding: 10px 20px;
@@ -38,21 +50,23 @@
   </style>
 </head>
 <body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+
   <div class="container">
     <h1>Bem-vindo ao Site com IA, Jogo e Spotify!</h1>
     <img src="https://placekitten.com/400/200" alt="Imagem Exemplo">
     <br>
-    <button onclick="toggleDarkMode()">Alternar Modo Noturno</button>
-    <button onclick="startDoom()">Iniciar Mini Doom</button>
-    <div id="doomContainer"></div>
-
-    <h2>Spotify Player</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="300" height="380" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <button onclick="startMinecraft()">Iniciar Mini Minecraft</button>
+    <div id="minecraftContainer"></div>
 
     <h2>Assistente IA</h2>
     <input type="text" id="userInput" placeholder="Fale com a IA" style="width: 300px; padding: 5px;">
     <button onclick="chatWithAI()">Enviar</button>
     <div id="aiResponse" style="margin-top: 10px;"></div>
+  </div>
+
+  <div class="spotify-player">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="250" height="80" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <script>
@@ -67,22 +81,22 @@
       let reply = "Desculpe, não entendi. Pode repetir?";
       if (input.includes("olá") || input.includes("oi")) {
         reply = "Olá! Como posso te ajudar hoje?";
-      } else if (input.includes("doom")) {
-        reply = "Para jogar Doom, clique no botão acima!";
+      } else if (input.includes("minecraft")) {
+        reply = "Para jogar Minecraft, clique no botão acima!";
       } else if (input.includes("spotify")) {
-        reply = "A playlist do Spotify está logo acima. Aproveite!";
+        reply = "O player do Spotify está no canto inferior esquerdo.";
       }
       response.innerText = reply;
     }
 
-    function startDoom() {
-      const container = document.getElementById("doomContainer");
-      if (!document.getElementById("doomIframe")) {
+    function startMinecraft() {
+      const container = document.getElementById("minecraftContainer");
+      if (!document.getElementById("minecraftIframe")) {
         const iframe = document.createElement("iframe");
-        iframe.id = "doomIframe";
-        iframe.src = "https://js-dos.com/games/doom.exe.html";
-        iframe.width = "640";
-        iframe.height = "400";
+        iframe.id = "minecraftIframe";
+        iframe.src = "https://classic.minecraft.net/";
+        iframe.width = "800";
+        iframe.height = "600";
         container.appendChild(iframe);
       }
     }
