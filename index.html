@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site com Minecraft, CS, Spotify e IA</title>
+  <title>Site de Jogos com IA</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: white;
-      color: black;
+      font-family: sans-serif;
+      background-color: #fff;
+      color: #000;
       transition: background 0.3s, color 0.3s;
     }
     body.dark-mode {
-      background-color: #121212;
-      color: white;
+      background-color: #111;
+      color: #f0f0f0;
     }
-    .container {
-      padding: 20px;
-      text-align: center;
-    }
-    .dark-toggle {
+    .toggle-dark {
       position: fixed;
       top: 10px;
       left: 10px;
-      z-index: 1000;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
     }
     .spotify-player {
       position: fixed;
@@ -33,41 +31,62 @@
       left: 10px;
       z-index: 1000;
     }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
       margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
     iframe {
-      border: none;
       margin-top: 20px;
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
     }
-    canvas {
-      border: 2px solid black;
-      margin: 20px auto;
-      display: block;
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+  <button class="toggle-dark" onclick="toggleDarkMode()">🌓</button>
 
   <div class="container">
-    <h1>Bem-vindo ao Site com IA, Jogos e Spotify!</h1>
-    <img src="https://placekitten.com/400/200" alt="Imagem Exemplo">
-    <br>
-    <button onclick="startMinecraft()">Iniciar Mini Minecraft</button>
-    <button onclick="startShooter()">Iniciar Jogo de Tiro (CS)</button>
+    <h1>Jogos Online + IA</h1>
+    <button onclick="loadMinecraft()">Abrir Minecraft Web</button>
+    <button onclick="loadShooter()">Abrir Jogo de Tiro</button>
+
     <div id="gameContainer"></div>
 
     <h2>Assistente IA</h2>
-    <input type="text" id="userInput" placeholder="Fale com a IA" style="width: 300px; padding: 5px;">
+    <input type="text" id="userInput" placeholder="Fale comigo">
     <button onclick="chatWithAI()">Enviar</button>
     <div id="aiResponse" style="margin-top: 10px;"></div>
   </div>
 
   <div class="spotify-player">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3U3j7E?utm_source=generator" width="250" height="80" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3U3j7E?utm_source=generator" width="250" height="80" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <script>
@@ -78,40 +97,22 @@
     function chatWithAI() {
       const input = document.getElementById("userInput").value.toLowerCase();
       const response = document.getElementById("aiResponse");
-
-      let reply = "Desculpe, não entendi. Pode repetir?";
-      if (input.includes("olá") || input.includes("oi")) {
-        reply = "Olá! Como posso te ajudar hoje?";
-      } else if (input.includes("minecraft")) {
-        reply = "Para jogar Minecraft, clique no botão acima!";
-      } else if (input.includes("cs") || input.includes("tiro")) {
-        reply = "Clique no botão de jogo de tiro para começar!";
-      } else if (input.includes("spotify")) {
-        reply = "O player do Spotify está no canto inferior esquerdo.";
-      }
+      let reply = "Não entendi, tente novamente.";
+      if (input.includes("olá") || input.includes("oi")) reply = "Oi! Em que posso ajudar?";
+      else if (input.includes("minecraft")) reply = "Clique no botão para abrir o Minecraft Web!";
+      else if (input.includes("cs") || input.includes("tiro")) reply = "Use o botão para abrir o jogo de tiro.";
+      else if (input.includes("spotify")) reply = "O player está no canto inferior esquerdo.";
       response.innerText = reply;
     }
 
-    function startMinecraft() {
+    function loadMinecraft() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = "";
-      const iframe = document.createElement("iframe");
-      iframe.id = "minecraftIframe";
-      iframe.src = "https://classic.minecraft.net/";
-      iframe.width = "800";
-      iframe.height = "600";
-      container.appendChild(iframe);
+      container.innerHTML = '<iframe src="https://minecraftforfree.net/embed.html" allowfullscreen></iframe>';
     }
 
-    function startShooter() {
+    function loadShooter() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = "";
-      const iframe = document.createElement("iframe");
-      iframe.id = "shooterIframe";
-      iframe.src = "https://krunker.io/";
-      iframe.width = "800";
-      iframe.height = "600";
-      container.appendChild(iframe);
+      container.innerHTML = '<iframe src="https://krunker.io" allowfullscreen></iframe>';
     }
   </script>
 </body>
