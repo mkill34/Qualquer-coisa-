@@ -42,6 +42,67 @@
   <script>
     function mostrarMensagem() {
       alert('Olá! Obrigado por visitar meu site 😊');
+    <html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Site com Modo Escuro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #005f6a;
+    }
+
+    /* Estilo para o modo escuro */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode button {
+      background-color: #444;
+    }
+
+    .dark-mode button:hover {
+      background-color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bem-vindo ao Meu Site!</h1>
+  <p>Este site agora tem suporte a modo escuro.</p>
+
+  <button onclick="mostrarMensagem()">Clique aqui</button>
+  <button onclick="alternarModo()">Alternar Modo Escuro</button>
+
+  <script>
     }
   </script>
 </body>
