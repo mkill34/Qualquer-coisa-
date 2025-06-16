@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #fff;
-      color: #000;
+      background-color: #000;
+      color: #f0f0f0;
       transition: background 0.3s, color 0.3s;
     }
     body.dark-mode {
@@ -24,6 +24,8 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
     }
     .spotify-player {
       position: fixed;
@@ -38,19 +40,23 @@
       justify-content: center;
       padding: 40px 20px;
       text-align: center;
+      background: linear-gradient(black, #111);
+      border-top: 5px solid #0ff;
+      border-bottom: 5px solid #0ff;
     }
     button {
       margin: 10px;
       padding: 10px 20px;
       border: none;
       border-radius: 6px;
-      background-color: #007bff;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
       color: white;
       cursor: pointer;
       font-size: 16px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
     button:hover {
-      background-color: #0056b3;
+      opacity: 0.8;
     }
     iframe {
       margin-top: 20px;
@@ -59,6 +65,7 @@
       height: 600px;
       border: none;
       border-radius: 8px;
+      box-shadow: 0 0 20px #0ff;
     }
     input {
       padding: 10px;
@@ -66,6 +73,14 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       margin-top: 10px;
+      background-color: #222;
+      color: #fff;
+    }
+    #aiResponse {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff;
     }
   </style>
 </head>
@@ -73,16 +88,17 @@
   <button class="toggle-dark" onclick="toggleDarkMode()">🌓</button>
 
   <div class="container">
-    <h1>Jogos Online + IA</h1>
+    <h1 style="color: #0ff; text-shadow: 0 0 10px #0ff;">Jogos Online + IA</h1>
     <button onclick="loadMinecraft()">Abrir Minecraft Web</button>
     <button onclick="loadShooter()">Abrir Jogo de Tiro</button>
+    <button onclick="loadRacing()">Abrir Jogo de Corrida</button>
 
     <div id="gameContainer"></div>
 
-    <h2>Assistente IA</h2>
+    <h2 style="color: #0ff; text-shadow: 0 0 10px #0ff;">Assistente IA</h2>
     <input type="text" id="userInput" placeholder="Fale comigo">
     <button onclick="chatWithAI()">Enviar</button>
-    <div id="aiResponse" style="margin-top: 10px;"></div>
+    <div id="aiResponse"></div>
   </div>
 
   <div class="spotify-player">
@@ -101,6 +117,7 @@
       if (input.includes("olá") || input.includes("oi")) reply = "Oi! Em que posso ajudar?";
       else if (input.includes("minecraft")) reply = "Clique no botão para abrir o Minecraft Web!";
       else if (input.includes("cs") || input.includes("tiro")) reply = "Use o botão para abrir o jogo de tiro.";
+      else if (input.includes("corrida")) reply = "Use o botão para abrir o jogo de corrida.";
       else if (input.includes("spotify")) reply = "O player está no canto inferior esquerdo.";
       response.innerText = reply;
     }
@@ -113,6 +130,11 @@
     function loadShooter() {
       const container = document.getElementById("gameContainer");
       container.innerHTML = '<iframe src="https://krunker.io" allowfullscreen></iframe>';
+    }
+
+    function loadRacing() {
+      const container = document.getElementById("gameContainer");
+      container.innerHTML = '<iframe src="https://www.crazygames.com/embed/extreme-car-parking" allowfullscreen></iframe>';
     }
   </script>
 </body>
