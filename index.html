@@ -1,9 +1,48 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-<title> Ola mundo! </title>
+  <meta charset="UTF-8">
+  <title>Meu Site Simples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    button {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #005f6a;
+    }
+  </style>
 </head>
-<body style="background-color:#788eff>
-<p> Ola mundo!</p>
-  <p> esse site foi criado por matheus</p>
+<body>
+  <h1>Bem-vindo ao Meu Site!</h1>
+  <p>Este é um exemplo de site simples com HTML, CSS e um pouco de JavaScript.</p>
+  <button onclick="mostrarMensagem()">Clique aqui</button>
+
+  <script>
+    function mostrarMensagem() {
+      alert('Olá! Obrigado por visitar meu site 😊');
+    }
+  </script>
 </body>
 </html>
