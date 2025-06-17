@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site de Jogos com IA</title>
+  <title>Site aleatorio</title>
   <style>
     body {
       margin: 0;
@@ -104,10 +104,10 @@
   <button class="toggle-dark" onclick="toggleDarkMode()">🌓</button>
 
   <div class="container">
-    <h1>Jogos Online + IA</h1>
+    <h1>Jogos Web</h1>
     <button onclick="loadMinecraft()">Abrir Minecraft Web</button>
     <button onclick="loadShooter()">Abrir Doom Clássico</button>
-    <button onclick="loadRacing()">Abrir Jogo de Corrida</button>
+    <button onclick="loadRacing()">Abrir Jogo do Sonic</button>
     <button id="fullscreenBtn" onclick="goFullscreen()">Tela Cheia</button>
     <div id="gameContainer"></div>
   </div>
@@ -134,26 +134,26 @@
       if (input.includes("olá") || input.includes("oi")) reply = "Oi! Em que posso ajudar?";
       else if (input.includes("minecraft")) reply = "Clique no botão para abrir o Minecraft Web!";
       else if (input.includes("doom") || input.includes("tiro")) reply = "Use o botão para abrir o Doom Clássico.";
-      else if (input.includes("corrida")) reply = "Use o botão para abrir o jogo de corrida.";
+      else if (input.includes("sonic") || input.includes("corrida")) reply = "Use o botão para abrir o jogo do Sonic.";
       else if (input.includes("spotify")) reply = "O player está no canto inferior esquerdo.";
       response.innerText = reply;
     }
 
     function loadMinecraft() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe id="gameFrame" src="https://classic.minecraft.net" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://classic.minecraft.net/" allowfullscreen></iframe>';
       document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
     function loadShooter() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe id="gameFrame" src="https://www.retrogames.cz/play_414-DOS.php" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://js-dos.com/games/doom.exe.html" allowfullscreen></iframe>';
       document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
     function loadRacing() {
       const container = document.getElementById("gameContainer");
-      container.innerHTML = '<iframe id="gameFrame" src="https://www.minijogos.com.br/jogo/sonic-classic-heroes" allowfullscreen></iframe>';
+      container.innerHTML = '<iframe id="gameFrame" src="https://www.retrogames.cc/embed/36466-sonic-r.html" allowfullscreen></iframe>';
       document.getElementById("fullscreenBtn").style.display = 'inline-block';
     }
 
